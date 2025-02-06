@@ -140,6 +140,10 @@ public class TechFest {
 			WebElement sizeOption = driver.findElement(By.xpath(xpath));
 			sizeOption.click();  // Select the size option						
 		}
+		WebElement check =driver.findElement(By.xpath("/html/body/div[1]/section/section/div/section/div/div/div/button"));
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(check));
+		check.click();
 	}
 
 }
