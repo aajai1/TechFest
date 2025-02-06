@@ -44,7 +44,7 @@ public class TechFest {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 
 
-		File file = new File("C:\\Users\\acer\\Documents\\ExcelData\\StudentData.xlsx") ;
+		File file = new File("./StudentData.xlsx") ;
 		FileInputStream ipsfile = new FileInputStream(file);
 		XSSFWorkbook Stubook = new XSSFWorkbook(ipsfile);
 		XSSFSheet sheet=Stubook.getSheetAt(0);
