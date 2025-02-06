@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,20 +15,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public class TechFest {
-
-	public static void main(String[] args) throws InvalidFormatException, IOException {
+@Test
+	public void event() throws IOException {
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://techfest.oceanacademy.co.in/ticket-summary");
 		driver.manage().window().maximize();
 		int Student =3;
 		int Professional=1;
-
-	
-
-
-
+		
 		//student
 		for (int i = 1; i <= Student; i++) { 
 			WebElement plusStudent =driver.findElement(By.xpath("//*[@id=\"root\"]/main[2]/section[1]/div[3]/div[1]/main/section/div/div[1]/div/button[2]"));
@@ -128,14 +124,14 @@ public class TechFest {
 				break;
 			default:
 				System.out.println("Invalid size: " + sizeValue);
-				continue;  // Skip if the size is invalid
+				continue;  
 			}
 			WebElement selectSize = driver.findElement(By.xpath("/html/body/div[1]/section/div[2]/div[2]/form/div[" + i + "]/div/div[2]/div[2]/div[2]/select"));
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(selectSize));
 			selectSize.click();
 
-			// Construct the XPath using the option index
+			//   option index
 			String xpath = "/html/body/div[1]/section/div[2]/div[2]/form/div[" + i + "]/div/div[2]/div[2]/div[2]/select/option[" + optionIndex + "]";
 			WebElement sizeOption = driver.findElement(By.xpath(xpath));
 			sizeOption.click();  // Select the size option						
