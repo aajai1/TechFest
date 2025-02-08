@@ -4,11 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.List;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -24,23 +19,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class TechFest {
-<<<<<<< HEAD
-	@Test
-	public  void techFest() throws InvalidFormatException, IOException, InterruptedException {
-=======
+
+	
+
 @Test
-	public void event() throws IOException {
->>>>>>> 0faa63f60decdf738efa1dff8e7ddf7d9ef36d4d
+	public void event() throws IOException, InterruptedException {
+
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://oa-techfest-test.web.app/ticket-summary");
 		driver.manage().window().maximize();
 		int Student =1;
 		int Professional=1;
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 0faa63f60decdf738efa1dff8e7ddf7d9ef36d4d
 		//student
 		for (int i = 1; i <= Student; i++) { 
 			WebElement plusStudent =driver.findElement(By.xpath("//*[@id=\"root\"]/main[2]/section[1]/div[3]/div[1]/main/section/div/div[1]/div/button[2]"));
