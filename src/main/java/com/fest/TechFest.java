@@ -10,7 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -22,16 +21,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public class TechFest {
+<<<<<<< HEAD
 	@Test
 	public  void techFest() throws InvalidFormatException, IOException, InterruptedException {
+=======
+@Test
+	public void event() throws IOException {
+>>>>>>> 0faa63f60decdf738efa1dff8e7ddf7d9ef36d4d
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://oa-techfest-test.web.app/ticket-summary");
 		driver.manage().window().maximize();
 		int Student =1;
 		int Professional=1;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 0faa63f60decdf738efa1dff8e7ddf7d9ef36d4d
 		//student
 		for (int i = 1; i <= Student; i++) { 
 			WebElement plusStudent =driver.findElement(By.xpath("//*[@id=\"root\"]/main[2]/section[1]/div[3]/div[1]/main/section/div/div[1]/div/button[2]"));
@@ -46,7 +55,7 @@ public class TechFest {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 
 
-		File file = new File("C:\\Users\\acer\\Documents\\ExcelData\\StudentData.xlsx") ;
+		File file = new File("./StudentData.xlsx") ;
 		FileInputStream ipsfile = new FileInputStream(file);
 		XSSFWorkbook Stubook = new XSSFWorkbook(ipsfile);
 		XSSFSheet sheet=Stubook.getSheetAt(0);
@@ -131,14 +140,14 @@ public class TechFest {
 				break;
 			default:
 				System.out.println("Invalid size: " + sizeValue);
-				continue;  // Skip if the size is invalid
+				continue;  
 			}
 			WebElement selectSize = driver.findElement(By.xpath("/html/body/div[1]/section/div[2]/div[2]/form/div[" + i + "]/div/div[2]/div[2]/div[2]/select"));
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(selectSize));
 			selectSize.click();
 
-			// Construct the XPath using the option index
+			//   option index
 			String xpath = "/html/body/div[1]/section/div[2]/div[2]/form/div[" + i + "]/div/div[2]/div[2]/div[2]/select/option[" + optionIndex + "]";
 			WebElement sizeOption = driver.findElement(By.xpath(xpath));
 			sizeOption.click();  // Select the size option						

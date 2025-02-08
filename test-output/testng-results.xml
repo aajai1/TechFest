@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
@@ -77,6 +78,20 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- techFest -->
+=======
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-02-06T22:55:47 IST" name="Default suite" finished-at="2025-02-06T22:55:53 IST" duration-ms="5954">
+    <groups>
+    </groups>
+    <test started-at="2025-02-06T22:55:47 IST" name="Default test" finished-at="2025-02-06T22:55:53 IST" duration-ms="5954">
+      <class name="com.fest.TechFest">
+        <test-method signature="event()[pri:0, instance:com.fest.TechFest@7c7b252e]" started-at="2025-02-06T22:55:48 IST" name="event" finished-at="2025-02-06T22:55:53 IST" duration-ms="5895" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- event -->
+>>>>>>> 0faa63f60decdf738efa1dff8e7ddf7d9ef36d4d
       </class> <!-- com.fest.TechFest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
