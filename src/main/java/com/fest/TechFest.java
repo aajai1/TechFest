@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -11,6 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,17 +24,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TechFest {
-
-	public static void main(String[] args) throws InvalidFormatException, IOException {
+	@Test
+	public  void techFest() throws InvalidFormatException, IOException, InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://techfest.oceanacademy.co.in/ticket-summary");
+		driver.get("https://oa-techfest-test.web.app/ticket-summary");
 		driver.manage().window().maximize();
-		int Student =3;
+		int Student =1;
 		int Professional=1;
-
-	
-
-
 
 		//student
 		for (int i = 1; i <= Student; i++) { 
@@ -58,6 +60,7 @@ public class TechFest {
 			String cellString =cell.toString();
 			System.out.println(cellString);
 			WebElement studenName=driver.findElement(By.xpath("/html[1]/body[1]/div[1]/section[1]/div[2]/div[2]/form[1]/div["+i+"]/div[1]/div[2]/div[1]/div[1]/input[1]"));
+
 			studenName.sendKeys(cellString);	
 		}
 		//fill email
@@ -108,7 +111,7 @@ public class TechFest {
 
 
 			String sizeValue = cellsize.toString().trim().toLowerCase();
-			
+
 			int optionIndex = 0;
 			switch (sizeValue) {
 			case "s":
@@ -144,6 +147,36 @@ public class TechFest {
 		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(check));
 		check.click();
+		Thread.sleep(5000);
+		
+		WebElement iframe = driver.findElement(By.xpath("//input[@name='save']"));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
+		iframe.click();
+		driver.switchTo().frame(iframe);
+		
+		//driver.switchTo().frame(0);
+		iframe.click();
+		driver.switchTo().frame(iframe);
+		
+		WebElement cardNo = driver.findElement(By.xpath("//[@type='checkbox']"));
+		//String CardString = cardNo.toString();
+		//CardString.
+		Thread.sleep(3000);
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("document.getElementById(arguments[0]).value = arguments[1];", "/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input", "125436894562158");
+
+		//wait.until(ExpectedConditions.elementToBeClickable(cardNo));
+		//cardNo.sendKeys("125436894562158");
+	
+		
+		
+		//WebElement Click=wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[1]/div[1]/label[2]/div/div"))));
+		//Click.click();
+		//		WebElement iframeElement = driver.findElement(By.xpath("/html/body/div[2]/iframe"));
+		//		WebElement frameClick=wait.until(ExpectedConditions.elementToBeClickable(iframeElement));
+		driver.switchTo().frame(1);
+		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input")).sendKeys("1456");
+	
 	}
 
 }
