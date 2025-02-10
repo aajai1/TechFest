@@ -150,13 +150,14 @@ public class TechFest {
 		//wait.until(ExpectedConditions.elementToBeClickable(check));
 		check.click();
 		driver.manage().window().setSize(new Dimension(360, 640));
-		Thread.sleep(5000);
+		driver.quit();
+		// Thread.sleep(5000);
 		
-		WebElement iframe = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div/div"));
-		iframe.click();
-		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
-		WebElement check1=driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div"));
-		wait.until(ExpectedConditions.elementToBeClickable(check1));
+		// WebElement iframe = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div/div"));
+		// iframe.click();
+		// wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
+		// WebElement check1=driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div"));
+		// wait.until(ExpectedConditions.elementToBeClickable(check1));
 		check1.sendKeys("1245789632154876");
 		//iframe.click();
 		//driver.switchTo().frame(iframe);
@@ -181,8 +182,8 @@ public class TechFest {
 		//Click.click();
 		//		WebElement iframeElement = driver.findElement(By.xpath("/html/body/div[2]/iframe"));
 		//		WebElement frameClick=wait.until(ExpectedConditions.elementToBeClickable(iframeElement));
-		driver.switchTo().frame(1);
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input")).sendKeys("1456");
+		// driver.switchTo().frame(1);
+		// driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input")).sendKeys("1456");
 	
 	}
 
