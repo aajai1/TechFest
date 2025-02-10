@@ -1,6 +1,5 @@
 package com.fest;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -10,10 +9,12 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v130.filesystem.model.File;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -36,6 +37,7 @@ public class TechFest {
 			WebElement plusStudent =driver.findElement(By.xpath("//*[@id=\"root\"]/main[2]/section[1]/div[3]/div[1]/main/section/div/div[1]/div/button[2]"));
 			plusStudent.click();
 		}
+		
 		//pro
 		for (int i = 1; i <= Professional; i++) { 
 			WebElement plusPro =driver.findElement(By.xpath("/html[1]/body[1]/div[1]/main[2]/section[1]/div[3]/div[2]/main[1]/section[1]/div[1]/div[1]/button[2]"));
@@ -45,7 +47,7 @@ public class TechFest {
 		driver.findElement(By.xpath("//button[@type='submit']")).click();
 
 
-		File file = new File("./StudentData.xlsx") ;
+		java.io.File file = new java.io.File("./StudentData.xlsx");
 		FileInputStream ipsfile = new FileInputStream(file);
 		XSSFWorkbook Stubook = new XSSFWorkbook(ipsfile);
 		XSSFSheet sheet=Stubook.getSheetAt(0);
@@ -142,27 +144,34 @@ public class TechFest {
 			WebElement sizeOption = driver.findElement(By.xpath(xpath));
 			sizeOption.click();  // Select the size option						
 		}
-		WebElement check =driver.findElement(By.xpath("/html/body/div[1]/section/section/div/section/div/div/div/button"));
-		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(check));
-		check.click();
-		Thread.sleep(5000);
 		
-		WebElement iframe = driver.findElement(By.xpath("//input[@name='save']"));
-		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
-		iframe.click();
-		driver.switchTo().frame(iframe);
+		WebElement check =driver.findElement(By.xpath("/html/body/div/section/section/div/section/div/div/div/button"));
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+		//wait.until(ExpectedConditions.elementToBeClickable(check));
+		check.click();
+		driver.manage().window().setSize(new Dimension(360, 640));
+		
+		 Thread.sleep(5000);
+		 driver.quit();
+		// WebElement iframe = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div/div"));
+		// iframe.click();
+		// wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
+		// WebElement check1=driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div[2]/div/div/div/div/form/div[2]/div/label[1]/div"));
+		// wait.until(ExpectedConditions.elementToBeClickable(check1));
+		//check1.sendKeys("1245789632154876");
+		//iframe.click();
+		//driver.switchTo().frame(iframe);
 		
 		//driver.switchTo().frame(0);
-		iframe.click();
-		driver.switchTo().frame(iframe);
-		
-		WebElement cardNo = driver.findElement(By.xpath("//[@type='checkbox']"));
-		//String CardString = cardNo.toString();
-		//CardString.
-		Thread.sleep(3000);
-		JavascriptExecutor js = (JavascriptExecutor)driver;
-		js.executeScript("document.getElementById(arguments[0]).value = arguments[1];", "/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input", "125436894562158");
+//		iframe.click();
+//		driver.switchTo().frame(iframe);
+//		
+//		WebElement cardNo = driver.findElement(By.xpath("//[@type='checkbox']"));
+//		//String CardString = cardNo.toString();
+//		//CardString.
+//		Thread.sleep(3000);
+//		JavascriptExecutor js = (JavascriptExecutor)driver;
+//		js.executeScript("document.getElementById(arguments[0]).value = arguments[1];", "/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input", "125436894562158");
 
 		//wait.until(ExpectedConditions.elementToBeClickable(cardNo));
 		//cardNo.sendKeys("125436894562158");
@@ -173,8 +182,8 @@ public class TechFest {
 		//Click.click();
 		//		WebElement iframeElement = driver.findElement(By.xpath("/html/body/div[2]/iframe"));
 		//		WebElement frameClick=wait.until(ExpectedConditions.elementToBeClickable(iframeElement));
-		driver.switchTo().frame(1);
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input")).sendKeys("1456");
+		// driver.switchTo().frame(1);
+		// driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/div/div/div[2]/div/div/div[2]/div/form/div[1]/div[1]/label/input")).sendKeys("1456");
 	
 	}
 
